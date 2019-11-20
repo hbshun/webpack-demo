@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>es module</h1>
+  <button id="importc">click me to import c</button>
+
+  <script>
+    console.log('html script: before main.js');
+    document.writeln('<br/>html script: before main.js<br/>');
+  </script>
+  <script type="module" src="./main.js"></script>
+  <script>
+    console.log('html script: after main.js');
+    document.writeln('<br/>html script: after main.js<br/>');
+  </script>
+</body>
+</html>
