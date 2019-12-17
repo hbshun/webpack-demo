@@ -9,10 +9,10 @@
     "build": "webpack"
   },
   "keywords": [],
-  "author": "hbshun <bb@bbyy.me> (https://bbyy.me/hbshun)",
+  "author": "hbshun <bb@bbyy.me>",
   "license": "MIT",
   "devDependencies": {
-    "webpack": "^4.41.2",
+    "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10"
   }
 }
