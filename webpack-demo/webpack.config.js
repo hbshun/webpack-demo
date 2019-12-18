@@ -68,6 +68,10 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.js$/,
+        use: 'babel-loader',
+      },
+      {
         test: /\.(jpg|png)$/,
         use: [
           {
