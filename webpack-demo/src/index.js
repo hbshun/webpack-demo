@@ -1,6 +1,6 @@
 
 import pkg from '../package.json';
-import './style/main.css';
+import './style/main.less';
 
 import './R';
 
