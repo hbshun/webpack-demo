@@ -71,9 +71,10 @@ module.exports = {
         test: /\.(jpg|png)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
               name: '[hash:6].[name].[ext]',
+              limit: 8190,
             },
           },
         ],
