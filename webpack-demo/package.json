@@ -15,6 +15,7 @@
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.0",
     "file-loader": "^5.0.2",
@@ -22,5 +23,9 @@
     "url-loader": "^3.0.0",
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }
