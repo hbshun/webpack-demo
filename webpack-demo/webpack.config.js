@@ -25,7 +25,7 @@ module.exports = {
   // 应用场景：项目太大、权限分离、共用Components
 
   // entry: {
-  //   main: './src/index.js',
+  //   index1: './src/index.js',
   //   index2: './src/index2.js',
   // },
 
@@ -34,6 +34,21 @@ module.exports = {
   //   './src/index.js',
   //   './src/index2.js',
   // ],
+
+
+  ////////////// Output ///////////////
+
+  /**
+   * 占位符
+   * [name]
+   * [hash]
+   */
+
+  output: {
+    filename: '[name].js',
+    path: path.join(__dirname, 'dist'),
+    // publicPath: 'https://cdn.sparrow.team/webpack-demo/'
+  },
 
   mode: 'development',
 
