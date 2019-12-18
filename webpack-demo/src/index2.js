@@ -1,0 +1,1 @@
+document.writeln('麻雀团队 Sparrow Team');
