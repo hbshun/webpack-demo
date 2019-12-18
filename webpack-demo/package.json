@@ -2,7 +2,7 @@
   "name": "webpack-demo",
   "version": "0.0.2",
   "private": true,
-  "description": "",
+  "description": "Webpack demo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

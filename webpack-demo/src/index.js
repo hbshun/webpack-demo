@@ -6,7 +6,4 @@ import './R';
 
 document.writeln('Hello, world');
 document.writeln(pkg.version);
-
-const obj = {};
-
-document.writeln(obj?.str);
+document.writeln(pkg?.description);

@@ -72,6 +72,10 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
+        test: /\.ttf$/,
+        use: 'file-loader'
+      },
+      {
         test: /\.js$/,
         use: 'babel-loader',
       },
