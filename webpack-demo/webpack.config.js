@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
- 
+
   // 0配置 对应的配置
   // entry: {
   //   main: './src/index.js',
@@ -66,6 +66,17 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(jpg|png)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[hash:6].[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
