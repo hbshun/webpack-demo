@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 module.exports = {
 
   // 0配置 对应的配置
@@ -98,6 +99,10 @@ module.exports = {
     ],
   },
   plugins: [
-
+    new webpack.HotModuleReplacementPlugin(),
   ],
+  devServer: {
+    contentBase: './',
+    hot: true,
+  }
 }
