@@ -58,7 +58,11 @@ module.exports = {
    * production：启用 FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 TerserPlugin。
    *
    */
-
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 1000, // 延迟时间
+  },
   mode: 'development',
 
   module: {
