@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 
   // 0配置 对应的配置
@@ -94,6 +95,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html', // 生成文件的文件名
+      template: 'index.html', // 源文件文件名，无需引入js css等，打包自动注入
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
