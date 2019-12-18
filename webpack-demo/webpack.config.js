@@ -50,6 +50,15 @@ module.exports = {
     // publicPath: 'https://cdn.sparrow.team/webpack-demo/'
   },
 
+  ////////////// Mode ///////////////
+  /**
+   * mode：值是字符串，以下三个值，默认是production
+   * none
+   * developement：启用 NamedChunksPlugin 和 NamedModulesPlugin。
+   * production：启用 FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 TerserPlugin。
+   *
+   */
+
   mode: 'development',
 
   module: {
