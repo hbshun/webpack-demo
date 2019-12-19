@@ -32,7 +32,7 @@ const pages = [
 
 // 特别注意 动态加载的前缀
 const Pages = pages.map(page => {
-  return loadable(() => import(`./pages/${page.filename}`), {
+  return loadable(() => import(/* webpackChunkName: "[request]" */`./pages/${page.filename}`), {
     fallback: <Loading />
   });
 });

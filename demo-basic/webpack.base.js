@@ -11,11 +11,13 @@ const outputs = {
     js: '[name].js',
     css: '[name].css',
     file: '[folder]/[name].[ext]',
+    chunkFilename: '__page_[name].js',
   },
   prod: {
     js: '[name]_[contenthash:8].js',
     css: '[name]_[contenthash:8].css',
     file: '[folder]/[name]_[contenthash:8].[ext]',
+    chunkFilename: '__page_[name]_[contenthash:8].js',
   }
 };
 const output = isDev ? outputs.dev : outputs.prod;
@@ -28,6 +30,7 @@ module.exports = {
   },
   output: {
     filename: output.js,
+    chunkFilename: output.chunkFilename,
     path: path.join(__dirname, 'dist'),
     // publicPath: 'https://cdn.sparrow.team/webpack-demo/'
   },
