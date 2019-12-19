@@ -81,6 +81,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        include: path.join(__dirname, 'src'),
         use: [
           { loader: 'thread-loader' },
           {
@@ -129,6 +130,15 @@ module.exports = {
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
   ],
+
+  resolve: {
+    modules: [path.join(__dirname, 'node_modules')],
+    extensions: ['.js'],
+    alias: {
+      'react': path.join(__dirname, 'node_modules/react/umd/react.production.min.js'),
+      'react-dom': path.join(__dirname, 'node_modules/react-dom/umd/react-dom.production.min.js'),
+    }
+  },
 
   // 分离基础包
   optimization: {
