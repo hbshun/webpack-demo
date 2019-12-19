@@ -77,7 +77,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html', // 生成文件的文件名
-      template: 'index.html', // 源文件文件名，无需引入js css等，打包自动注入
+      template: './src/assets/index.html', // 源文件文件名，无需引入js css等，打包自动注入
+      favicon: './src/assets/images/favicon.ico',
       minify: {
         collapseWhitespace: true,
         removeComments: true,
