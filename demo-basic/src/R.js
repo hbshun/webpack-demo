@@ -9,24 +9,34 @@ import {
   Link
 } from "react-router-dom";
 
-const pages = ['home', 'about', 'dashboard'];
-const Pages = pages.map(pagename => {
-  return loadable(() => import(`./pages/${pagename}.js`), {
+const pages = [
+  {
+    path: '/',
+    name: '首页',
+    component: './pages/home.js',
+    filename: 'home.js'
+  },
+  {
+    path: '/about',
+    name: '关于',
+    component: './pages/about.js',
+    filename: 'about.js'
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: './pages/dashboard.js',
+    filename: 'dashboard.js'
+  }
+];
+
+// 特别注意 动态加载的前缀
+const Pages = pages.map(page => {
+  return loadable(() => import(`./pages/${page.filename}`), {
     fallback: <Loading />
   });
 });
 
-const Home = loadable(() => import('./pages/home.js'), {
-  fallback: <Loading />
-});
-const About = loadable(() => import('./pages/about.js'), {
-  fallback: <Loading />
-});
-const Dashboard = loadable(() => import('./pages/dashboard.js'), {
-  fallback: <Loading />
-});
-
-console.log(Pages);
 class LoadablePage extends React.Component {
   render() {
     const index = this.props.index;
@@ -35,41 +45,31 @@ class LoadablePage extends React.Component {
   }
 }
 
-function RouterExample () {
+function RouterExample() {
   return (
     <BrowserRouter>
       <div>
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+          {pages.map(page => {
+            return (
+              <li key={page.path}>
+                <Link to={page.path}>{page.name}</Link>
+              </li>
+            );
+          })}
         </ul>
 
         <hr />
 
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
         <Switch>
-          <Route exact path="/">
-            <LoadablePage index="0" />
-          </Route>
-          <Route path="/about">
-            <LoadablePage index="1" />
-          </Route>
-          <Route path="/dashboard">
-            <LoadablePage index="2" />
-          </Route>
+          {pages.map((page, index) => {
+            return (
+              <Route key={page.path} exact={page.path === '/'} path={page.path}>
+                <LoadablePage index={index} />
+              </Route>
+            );
+          })}
+
         </Switch>
       </div>
     </BrowserRouter>
