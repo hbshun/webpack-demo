@@ -3,9 +3,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+    index2: './src/index2.js',
+  },
   output: {
-    filename: '[name].js',
+    filename: '[name]_[contenthash:8].js',
     path: path.join(__dirname, 'dist'),
     // publicPath: 'https://cdn.sparrow.team/webpack-demo/'
   },
@@ -41,7 +44,14 @@ module.exports = {
       },
       {
         test: /\.ttf$/,
-        use: 'file-loader'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name]_[contenthash:8].[ext]',
+            }
+          },
+        ],
       },
       {
         test: /\.js$/,
@@ -53,7 +63,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: '[hash:6].[name].[ext]',
+              name: '[name]_[contenthash:8].[ext]',
               limit: 8190,
             },
           },
@@ -69,7 +79,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // all options are optional
-      filename: '[name].css',
+      filename: '[name]_[contenthash:8].css',
       chunkFilename: '[id].css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
