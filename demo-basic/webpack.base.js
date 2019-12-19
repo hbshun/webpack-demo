@@ -1,5 +1,6 @@
 
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -82,7 +83,7 @@ module.exports = {
         test: /\.js$/,
         use: [
           { loader: 'thread-loader' },
-          'babel-loader'
+          { loader: 'babel-loader' },
         ],
       },
       {
@@ -103,7 +104,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html', // 生成文件的文件名
-      template: './src/assets/index.html', // 源文件文件名，无需引入js css等，打包自动注入
+      template: './dll/index.html', // 源文件文件名，无需引入js css等，打包自动注入
       favicon: './src/assets/images/favicon.ico',
       minify: isDev ? false : {
         collapseWhitespace: true,
@@ -121,26 +122,32 @@ module.exports = {
       chunkFilename: '[id].css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
+    new webpack.DllReferencePlugin({
+      manifest: require('./dll/library.json'),
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: require('./dll/components.json'),
+    }),
   ],
 
-  // 分离基础包
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /(react|react-dom)/,
-          name: 'vendors',
-          chunks: 'all'
-        },
-        components: {
-          minSize: 1,
-          name: 'components',
-          minChunks: 2,
-          chunks: 'all',
-        }
-      }
-    }
-  },
+  // // 分离基础包
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       commons: {
+  //         test: /(react|react-dom)/,
+  //         name: 'vendors',
+  //         chunks: 'all'
+  //       },
+  //       components: {
+  //         minSize: 1,
+  //         name: 'components',
+  //         minChunks: 2,
+  //         chunks: 'all',
+  //       }
+  //     }
+  //   }
+  // },
 
   // optimization: {
   //   splitChunks: {
