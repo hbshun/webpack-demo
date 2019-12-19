@@ -27,6 +27,7 @@ module.exports = {
 
   entry: {
     main: './src/index.js',
+    index2: './src/index2.js',
   },
   output: {
     filename: output.js,
@@ -114,5 +115,48 @@ module.exports = {
       chunkFilename: '[id].css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
-  ]
+  ],
+
+  // 分离基础包
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /(react|react-dom)/,
+          name: 'vendors',
+          chunks: 'all'
+        },
+        components: {
+          minSize: 1,
+          name: 'components',
+          minChunks: 2,
+          chunks: 'all',
+        }
+      }
+    }
+  },
+
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all', // 默认是async, 还有 initial 和 all
+  //     minSize: 30000, // 最小的大小
+  //     maxSize: 0, // 最大的大小
+  //     minChunks: 10,  // 使用次数
+  //     maxAsyncRequests: 5,  // 异步同时请求数量
+  //     maxInitialRequests: 3,
+  //     automaticNameDelimiter: '~',
+  //     name: true,
+  //     cacheGroups: {
+  //       vendors: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         priority: -10
+  //       },
+  //       default: {
+  //         minChunks: 2,
+  //         priority: -20,
+  //         reuseExistingChunk: true
+  //       }
+  //     }
+  //   }
+  // },
 }
