@@ -3,6 +3,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const isDev = process.env.WEBPACK_DEV_SERVER === 'true' || process.env.NODE_ENV === 'development';
 
@@ -82,7 +83,12 @@ module.exports = {
         test: /\.js$/,
         use: [
           { loader: 'thread-loader' },
-          'babel-loader'
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
+          }
         ],
       },
       {
@@ -100,6 +106,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new HardSourceWebpackPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html', // 生成文件的文件名
