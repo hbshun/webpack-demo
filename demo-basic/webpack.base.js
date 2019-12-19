@@ -28,6 +28,9 @@ module.exports = {
   entry: {
     main: './src/index.js',
     index2: './src/index2.js',
+    index11: './src/index11.js',
+    index12: './src/index12.js',
+    index13: './src/index13.js',
   },
   output: {
     filename: output.js,
@@ -77,7 +80,10 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        use: [
+          { loader: 'thread-loader' },
+          'babel-loader'
+        ],
       },
       {
         test: /\.(jpg|png|ico)$/,
