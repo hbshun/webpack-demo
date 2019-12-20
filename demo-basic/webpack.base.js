@@ -89,6 +89,9 @@ module.exports = {
             options: {
               cacheDirectory: true
             }
+          },
+          {
+            loader: 'eslint-loader',
           }
         ],
       },
